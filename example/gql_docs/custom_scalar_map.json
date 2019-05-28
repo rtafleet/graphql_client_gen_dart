@@ -1,0 +1,12 @@
+{
+  "custom_scalars": [
+    {
+      "name": "GitSSHRemote",
+      "dart_type": "String"
+    },
+    {
+      "name": "URI",
+      "dart_type": "String"
+    }
+  ]
+}

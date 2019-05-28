@@ -1,0 +1,29 @@
+name: graphql_client_generator
+description: A starting point for Dart libraries or applications.
+version: "0.0.1"
+author: Dustin Graham <dgraham@rtafleet.com>
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  built_value: ^6.2.0
+  built_collection: ^4.1.0
+  graphql_dart:
+    git:
+      url: git@github.com:rtafleet/graphql_client_gen_dart.git
+      path: graphql_dart
+  source_gen: ^0.9.3
+  recase: ^2.0.0+1
+  graphql_parser: ^1.1.3
+  build_runner: ^1.1.2
+  built_value_generator: ^6.2.0
+  code_builder: ^3.1.3
+
+dev_dependencies:
+  test: ^1.6.1
+  mockito: ^4.0.0
+
+executables:
+  graphql-client-generator: graphql_client_generator

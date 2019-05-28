@@ -1,0 +1,684 @@
+{
+  "data": {
+    "getMe": {
+      "id": "dgraham@stage.rta-host.com",
+      "email": "dgraham@rtafleet.com",
+      "firstName": "Dustin",
+      "isSupportAgent": true,
+      "lastName": "Graham",
+      "status": {
+        "value": "Enabled",
+        "message": "User is enabled."
+      },
+      "tenants": [
+        {
+          "id": "RTA01267",
+          "username": "rtasupport",
+          "name": "Cherry Creek Schools",
+          "roles": [
+            {
+              "id": "2C980201-C00C-4D3D-A2A4-02835C1D6DB1",
+              "name": "Parts Clerk",
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "type": "facility"
+            }
+          ],
+          "permissions": [
+            "dashboards:view",
+            "parts:view",
+            "parts:add",
+            "parts:update"
+          ],
+          "facilities": [
+            {
+              "id": "1",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "001",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "16500 EAST SMOKY HILL ROAD",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "(720) 886-7415",
+              "contact": "SHERRY SPICER",
+              "cacheId": "4da3cea3b9da8b74618c0636ff2c1fe8"
+            },
+            {
+              "id": "2",
+              "name": "RTA Fleet Management Software",
+              "nickname": "RTA",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "17437 N. 71st Drive Ste 110",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "6235812447",
+              "contact": "Josh Turley",
+              "cacheId": "5cb0ff5873dc1df8bca1d9a37ac3e898"
+            },
+            {
+              "id": "3",
+              "name": "",
+              "nickname": "SOLD2",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "b0bb5cc162b96bbac956e70f8f1e16a5"
+            },
+            {
+              "id": "200",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "CENTR",
+              "isPrimary": true,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "16500 SMOKY HILL ROAD",
+              "address2": "AURORA, CO",
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-886-7417",
+              "contact": "MIKE HEINRICH",
+              "cacheId": "3e87f7e8e1ededa96417973330eb3898"
+            },
+            {
+              "id": "225",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "EAST",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "25001 E BELLVIEW",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-886-4107",
+              "contact": "STEWART HAINES",
+              "cacheId": "4abaa0641a399b555083c924d87bb19b"
+            },
+            {
+              "id": "250",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "WEST",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "4850 S. YOSEMITE",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-554-4656",
+              "contact": "GAYLE PATTERSON",
+              "cacheId": "08fa5931b86e5f15014c1cda6970590f"
+            },
+            {
+              "id": "500",
+              "name": "SUPPLIES",
+              "nickname": "SUPPL",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "5c5110dd10eb9b1901df08a8b482aa05"
+            },
+            {
+              "id": "998",
+              "name": "",
+              "nickname": "AUCTI",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "4248af88326f1ce2b25d2d0a660ee77c"
+            },
+            {
+              "id": "999",
+              "name": "ALL SOLD VEHICLES",
+              "nickname": "SOLD",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "a21ba7d4dab811e908990805310ccb34"
+            }
+          ],
+          "entitlements": [],
+          "cacheId": "2e7cb78b765f5b64b50ea2ce7da8e350",
+          "settings": {
+            "allowAdjustmentAuthorization": true
+          }
+        },
+        {
+          "id": "RTA01675",
+          "username": null,
+          "name": "Transdev",
+          "roles": [],
+          "permissions": [],
+          "facilities": [],
+          "entitlements": [],
+          "cacheId": "1714dc45f778bce2a55a2a2d8c3fc0d4",
+          "settings": {
+            "allowAdjustmentAuthorization": false
+          }
+        },
+        {
+          "id": "RTA01451",
+          "username": "rtasupport",
+          "name": "Anderson County Fleet Service - SC",
+          "roles": [
+            {
+              "id": "2C980201-C00C-4D3D-A2A4-02835C1D6DB1",
+              "name": "Parts Clerk",
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "type": "facility"
+            }
+          ],
+          "permissions": [
+            "dashboards:view",
+            "parts:view",
+            "parts:add",
+            "parts:update"
+          ],
+          "facilities": [
+            {
+              "id": "1",
+              "name": "ANDERSON COUNTY",
+              "nickname": "FLEET",
+              "isPrimary": true,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": "739 MICHELIN BOULEVARD",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "(864) 260-4020",
+              "contact": "Joseph Stone",
+              "cacheId": "9e65a289d6bc9808e17136c87acabc67"
+            },
+            {
+              "id": "2",
+              "name": "FLEET SERVICES FACILITY 2",
+              "nickname": "ACSO",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": "2901 MARTIN LUTHER KING BLVD.",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "864-760-1487",
+              "contact": "JOE STONE",
+              "cacheId": "a4cddea8ee91819c3b63e1f3f875dfa7"
+            },
+            {
+              "id": "999",
+              "name": "",
+              "nickname": "SCRAP",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "790bd7cf4b8220e4818a2cae661a77b2"
+            }
+          ],
+          "entitlements": [],
+          "cacheId": "8dd0f3dd06192289e89dd8b05f91463f",
+          "settings": {
+            "allowAdjustmentAuthorization": true
+          }
+        }
+      ]
+    },
+    "getMe2": {
+      "id": "dgraham@stage.rta-host.com",
+      "email": "dgraham@rtafleet.com",
+      "firstName": "Dustin",
+      "isSupportAgent": true,
+      "lastName": "Graham",
+      "status": {
+        "value": "Enabled",
+        "message": "User is enabled."
+      },
+      "tenants": [
+        {
+          "id": "RTA01267",
+          "username": "rtasupport",
+          "name": "Cherry Creek Schools",
+          "roles": [
+            {
+              "id": "2C980201-C00C-4D3D-A2A4-02835C1D6DB1",
+              "name": "Parts Clerk",
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "type": "facility"
+            }
+          ],
+          "permissions": [
+            "dashboards:view",
+            "parts:view",
+            "parts:add",
+            "parts:update"
+          ],
+          "facilities": [
+            {
+              "id": "1",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "001",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "16500 EAST SMOKY HILL ROAD",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "(720) 886-7415",
+              "contact": "SHERRY SPICER",
+              "cacheId": "4da3cea3b9da8b74618c0636ff2c1fe8"
+            },
+            {
+              "id": "2",
+              "name": "RTA Fleet Management Software",
+              "nickname": "RTA",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "17437 N. 71st Drive Ste 110",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "6235812447",
+              "contact": "Josh Turley",
+              "cacheId": "5cb0ff5873dc1df8bca1d9a37ac3e898"
+            },
+            {
+              "id": "3",
+              "name": "",
+              "nickname": "SOLD2",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "b0bb5cc162b96bbac956e70f8f1e16a5"
+            },
+            {
+              "id": "200",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "CENTR",
+              "isPrimary": true,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "16500 SMOKY HILL ROAD",
+              "address2": "AURORA, CO",
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-886-7417",
+              "contact": "MIKE HEINRICH",
+              "cacheId": "3e87f7e8e1ededa96417973330eb3898"
+            },
+            {
+              "id": "225",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "EAST",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "25001 E BELLVIEW",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-886-4107",
+              "contact": "STEWART HAINES",
+              "cacheId": "4abaa0641a399b555083c924d87bb19b"
+            },
+            {
+              "id": "250",
+              "name": "CHERRY CREEK SCHOOLS",
+              "nickname": "WEST",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": "4850 S. YOSEMITE",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "720-554-4656",
+              "contact": "GAYLE PATTERSON",
+              "cacheId": "08fa5931b86e5f15014c1cda6970590f"
+            },
+            {
+              "id": "500",
+              "name": "SUPPLIES",
+              "nickname": "SUPPL",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "5c5110dd10eb9b1901df08a8b482aa05"
+            },
+            {
+              "id": "998",
+              "name": "",
+              "nickname": "AUCTI",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "4248af88326f1ce2b25d2d0a660ee77c"
+            },
+            {
+              "id": "999",
+              "name": "ALL SOLD VEHICLES",
+              "nickname": "SOLD",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01267",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "a21ba7d4dab811e908990805310ccb34"
+            }
+          ],
+          "entitlements": [],
+          "cacheId": "2e7cb78b765f5b64b50ea2ce7da8e350",
+          "settings": {
+            "allowAdjustmentAuthorization": true
+          }
+        },
+        {
+          "id": "RTA01675",
+          "username": null,
+          "name": "Transdev",
+          "roles": [],
+          "permissions": [],
+          "facilities": [],
+          "entitlements": [],
+          "cacheId": "1714dc45f778bce2a55a2a2d8c3fc0d4",
+          "settings": {
+            "allowAdjustmentAuthorization": false
+          }
+        },
+        {
+          "id": "RTA01451",
+          "username": "rtasupport",
+          "name": "Anderson County Fleet Service - SC",
+          "roles": [
+            {
+              "id": "2C980201-C00C-4D3D-A2A4-02835C1D6DB1",
+              "name": "Parts Clerk",
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "type": "facility"
+            }
+          ],
+          "permissions": [
+            "dashboards:view",
+            "parts:view",
+            "parts:add",
+            "parts:update"
+          ],
+          "facilities": [
+            {
+              "id": "1",
+              "name": "ANDERSON COUNTY",
+              "nickname": "FLEET",
+              "isPrimary": true,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": "739 MICHELIN BOULEVARD",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "(864) 260-4020",
+              "contact": "Joseph Stone",
+              "cacheId": "9e65a289d6bc9808e17136c87acabc67"
+            },
+            {
+              "id": "2",
+              "name": "FLEET SERVICES FACILITY 2",
+              "nickname": "ACSO",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": "2901 MARTIN LUTHER KING BLVD.",
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": "864-760-1487",
+              "contact": "JOE STONE",
+              "cacheId": "a4cddea8ee91819c3b63e1f3f875dfa7"
+            },
+            {
+              "id": "999",
+              "name": "",
+              "nickname": "SCRAP",
+              "isPrimary": false,
+              "roles": [],
+              "permissions": [
+                "dashboards:view",
+                "parts:view",
+                "parts:add",
+                "parts:update"
+              ],
+              "tenantId": "RTA01451",
+              "address1": null,
+              "address2": null,
+              "state": null,
+              "postalCode": null,
+              "phoneNumber": null,
+              "contact": null,
+              "cacheId": "790bd7cf4b8220e4818a2cae661a77b2"
+            }
+          ],
+          "entitlements": [],
+          "cacheId": "8dd0f3dd06192289e89dd8b05f91463f",
+          "settings": {
+            "allowAdjustmentAuthorization": true
+          }
+        }
+      ]
+    }
+  }
+}
