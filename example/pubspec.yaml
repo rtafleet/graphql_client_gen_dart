@@ -1,0 +1,24 @@
+name: example
+description: A sample command-line application.
+# version: 1.0.0
+# author: Dustin Graham <dgraham@rtafleet.com>
+
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+
+dependencies:
+  built_value: ^6.1.1
+  built_collection: ^4.0.0
+  graphql_dart: any
+
+dev_dependencies:
+  test: ^1.0.0
+  graphql_client_generator: any
+  build_runner: ^1.1.2
+  built_value_generator: ^6.2.0
+
+dependency_overrides:
+  graphql_client_generator:
+    path: ../graphql_client_generator
+  graphql_dart:
+    path: ../graphql_dart

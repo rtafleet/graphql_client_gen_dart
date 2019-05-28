@@ -1,0 +1,58 @@
+fragment SearchResultItemConnection on SearchResultItemConnection {
+  repositoryCount
+  nodes {
+    ...SearchResultItem
+  }
+}
+
+fragment SearchResultItem on SearchResultItem {
+  ...Repository
+}
+
+fragment Repository on Repository {
+  id
+  description
+  hasIssuesEnabled
+  isPrivate
+  sshUrl
+  name
+  stargazers {
+    ...StargazerConnection
+  }
+  viewerHasStarred
+  owner {
+    ...RepositoryOwner
+  }
+}
+
+fragment RepositoryOwner on RepositoryOwner {
+  username: login
+  avatarUrl(size: $avatarSize)
+  ...Organization
+  ...User
+}
+
+fragment Organization on Organization {
+  name
+  type: __typename
+}
+
+fragment User on User {
+  name
+  type: __typename
+}
+
+fragment StargazerConnection on StargazerConnection {
+  totalCount
+}
+
+fragment RepositoryConnection on RepositoryConnection {
+  nodes {
+    ...Fork
+  }
+}
+
+fragment Fork on Repository {
+  id
+  description
+}

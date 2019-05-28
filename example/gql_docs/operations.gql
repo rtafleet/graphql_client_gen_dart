@@ -1,0 +1,5 @@
+query searchRepos($queryString: String!, $first: Int!, $avatarSize: Int!) {
+  search(type: REPOSITORY, query: $queryString, first: $first) {
+    ...SearchResultItemConnection
+  }
+}
