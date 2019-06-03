@@ -8,7 +8,9 @@ void main() async {
   final client = Client();
   final url = "https://api.github.com/graphql";
   final token = await (File(".github_key.txt")).readAsString();
-  final gqlClient = GQLClient(client, url, "Bearer $token");
+  final gqlClient = GQLClient(client, url, <String, String>{
+    "Authorization": "Bearer $token",
+  });
   final generator = GQLCodeGenerator(
     gql: gqlClient,
     fragmentFilePath: "gql_docs/fragments.gql",
