@@ -7,9 +7,9 @@ import 'package:http/http.dart';
 class GQLClient {
   final Client client;
   final String url;
-  final String authorization;
+  final Map<String, String> headers;
 
-  GQLClient(this.client, this.url, this.authorization);
+  GQLClient(this.client, this.url, this.headers);
 
   Future<Map<String, dynamic>> query(String queryString,
       {Map<String, dynamic> args}) async {
@@ -17,13 +17,13 @@ class GQLClient {
       'variables': args,
       'query': queryString
     };
+    final standardHeaders = <String, String>{
+      "Content-Type": "application/json"
+    };
 
     final Response response = await client.post(
       url,
-      headers: {
-        "authorization": authorization,
-        "Content-Type": "application/json"
-      },
+      headers: standardHeaders..addAll(headers),
       body: json.encode(body),
     );
 
