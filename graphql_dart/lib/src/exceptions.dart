@@ -63,14 +63,31 @@ class GQLError {
     if (_errorPrinter != null) {
       return _errorPrinter(this);
     }
-    return '$message: ${locations is List ? locations.map((l) => '[${l.toString()}]').join('') : ""}';
+    return '$message: ${path is List ? path.join(' -> ') : ""}';
   }
 }
 
 /// A Exception that is raised if the GQL response has a [GQLError].
 class GQLException implements Exception {
-  /// The Exception message.
-  final String message;
+  final String messageOverride;
+
+  String get message {
+    if (messageOverride != null) {
+      return messageOverride;
+    }
+    if (gqlErrors == null) {
+      return null;
+    }
+    if (gqlErrors.length > 1) {
+      String allMessages = "";
+      for (var error in gqlErrors) {
+        allMessages += "${error.toString()} \n";
+      }
+      return "Multiple errors: $allMessages";
+    } else {
+      return gqlErrors.first.toString();
+    }
+  }
 
   /// The list of [GQLError] in the response.
   final List<GQLError> gqlErrors;
@@ -81,12 +98,12 @@ class GQLException implements Exception {
 
   final Map<String, dynamic> response;
 
-  /// Creates a new [GQLException].
-  ///
-  /// It requires a message and a JSON list from a GQL response
-  /// (returned by a GQL server).
-  GQLException(this.message, List rawGQLError, this.queryString, this.variables,
-      this.response)
+  /// The message is derived from the underlying error, but can be explicitly set
+  GQLException(
+      List rawGQLError,
+      this.queryString,
+      this.variables,
+      this.response, {this.messageOverride})
       : gqlErrors =
             new List.from(rawGQLError.map((d) => new GQLError.fromJSON(d)));
 

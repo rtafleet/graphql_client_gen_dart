@@ -42,7 +42,6 @@ class GQLClient {
 
     if (jsonResponse['errors'] != null && jsonResponse['errors'].length > 0) {
       var gqlException = GQLException(
-          'Error returned by the server in the query',
           jsonResponse['errors'],
           queryString,
           args,
