@@ -25,7 +25,7 @@ MethodInfo methodInfoForTypeRef(
   } else {
     Directive importDirective;
     if (type.isEnum) {
-      returnType = type.concreteType.name;
+      returnType = ReCase(type.concreteType.name).pascalCase;
       // add an import for this enum
       importDirective = importResolver.enumModelNamed(returnType);
     } else {
