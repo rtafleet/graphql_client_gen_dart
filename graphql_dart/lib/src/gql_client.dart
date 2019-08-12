@@ -8,8 +8,10 @@ class GQLClient {
   final Client client;
   final String url;
   final Map<String, String> headers;
+  final Encoding encoding;
 
-  GQLClient(this.client, this.url, this.headers);
+  GQLClient(this.client, this.url, this.headers,
+      {this.encoding = const Utf8Codec()});
 
   Future<Map<String, dynamic>> query(String queryString,
       {Map<String, dynamic> args}) async {
@@ -37,15 +39,12 @@ class GQLClient {
       );
     }
 
-    var stringBody = response.body;
+    var stringBody = encoding.decode(response.bodyBytes);
     final Map<String, dynamic> jsonResponse = json.decode(stringBody);
 
     if (jsonResponse['errors'] != null && jsonResponse['errors'].length > 0) {
-      var gqlException = GQLException(
-          jsonResponse['errors'],
-          queryString,
-          args,
-          jsonResponse);
+      var gqlException =
+          GQLException(jsonResponse['errors'], queryString, args, jsonResponse);
       if (GQLExceptionReporter.gqlExceptionHandler != null) {
         GQLExceptionReporter.gqlExceptionHandler(gqlException);
       }
