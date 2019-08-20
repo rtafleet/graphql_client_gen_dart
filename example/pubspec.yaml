@@ -19,6 +19,6 @@ dev_dependencies:
 
 dependency_overrides:
   graphql_client_generator:
-    path: ../graphql_client_generator
+    path: ../packages/graphql_client_generator
   graphql_dart:
-    path: ../graphql_dart
+    path: ../packages/graphql_dart

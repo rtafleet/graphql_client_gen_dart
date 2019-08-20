@@ -9,12 +9,14 @@
       <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/graphql_client_generator/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/graphql_client_generator/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/graphql_client_generator/build" />
-      <excludeFolder url="file://$MODULE_DIR$/graphql_dart/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/graphql_dart/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/graphql_dart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/graphql_client_generator/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/graphql_client_generator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/graphql_client_generator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/graphql_dart/.dart_tool" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
