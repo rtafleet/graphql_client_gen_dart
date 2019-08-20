@@ -127,11 +127,11 @@ dependency_overrides:
   graphql_client_generator:
     git:
       url: git@github.com:rtafleet/graphql_client_gen_dart.git
-      path: graphql_client_generator
+      path: packages/graphql_client_generator
   graphql_dart:
     git:
       url: git@github.com:rtafleet/graphql_client_gen_dart.git
-      path: graphql_dart
+      path: packages/graphql_dart
 ```
 
 # Integration
