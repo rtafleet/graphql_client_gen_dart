@@ -15,7 +15,7 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
   final String wireName = 'Repository';
 
   @override
-  Iterable serialize(Serializers serializers, Repository object,
+  Iterable<Object> serialize(Serializers serializers, Repository object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'id',
@@ -47,12 +47,11 @@ class _$RepositorySerializer implements StructuredSerializer<Repository> {
         ..add(serializers.serialize(object.description,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  Repository deserialize(Serializers serializers, Iterable serialized,
+  Repository deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new RepositoryBuilder();
 
@@ -127,7 +126,7 @@ class _$Repository extends Repository {
   @override
   final RepositoryOwner owner;
 
-  factory _$Repository([void updates(RepositoryBuilder b)]) =>
+  factory _$Repository([void Function(RepositoryBuilder) updates]) =>
       (new RepositoryBuilder()..update(updates)).build();
 
   _$Repository._(
@@ -168,7 +167,7 @@ class _$Repository extends Repository {
   }
 
   @override
-  Repository rebuild(void updates(RepositoryBuilder b)) =>
+  Repository rebuild(void Function(RepositoryBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -293,7 +292,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   }
 
   @override
-  void update(void updates(RepositoryBuilder b)) {
+  void update(void Function(RepositoryBuilder) updates) {
     if (updates != null) updates(this);
   }
 

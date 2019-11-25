@@ -7,15 +7,22 @@ part of 'repository_permission.dart';
 // **************************************************************************
 
 const RepositoryPermission _$ADMIN = const RepositoryPermission._('ADMIN');
+const RepositoryPermission _$MAINTAIN =
+    const RepositoryPermission._('MAINTAIN');
 const RepositoryPermission _$WRITE = const RepositoryPermission._('WRITE');
+const RepositoryPermission _$TRIAGE = const RepositoryPermission._('TRIAGE');
 const RepositoryPermission _$READ = const RepositoryPermission._('READ');
 
 RepositoryPermission _$valueOf(String name) {
   switch (name) {
     case 'ADMIN':
       return _$ADMIN;
+    case 'MAINTAIN':
+      return _$MAINTAIN;
     case 'WRITE':
       return _$WRITE;
+    case 'TRIAGE':
+      return _$TRIAGE;
     case 'READ':
       return _$READ;
     default:
@@ -26,7 +33,9 @@ RepositoryPermission _$valueOf(String name) {
 final BuiltSet<RepositoryPermission> _$values =
     new BuiltSet<RepositoryPermission>(const <RepositoryPermission>[
   _$ADMIN,
+  _$MAINTAIN,
   _$WRITE,
+  _$TRIAGE,
   _$READ,
 ]);
 

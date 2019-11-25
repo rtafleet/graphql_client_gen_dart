@@ -6,7 +6,7 @@ import 'package:example/github_api/src/operation/operation.dart';
 import 'package:example/github_api/src/github_api_json_plugin.dart';
 part 'serializers.g.dart';
 
-@SerializersFor(const [
+@SerializersFor([
   SearchResultItemConnection,
   Repository,
   StargazerConnection,

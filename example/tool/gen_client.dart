@@ -27,12 +27,20 @@ void main() async {
     print("error generating github client: $e");
   }
 
-  await Process.start("flutter", [
-    "packages",
-    "pub",
-    "run",
-    "build_runner",
-    "build",
-    "--delete-conflicting-outputs"
-  ]);
+  await Process.start(
+    "flutter",
+    [
+      "packages",
+      "pub",
+      "run",
+      "build_runner",
+      "build",
+      "--delete-conflicting-outputs",
+    ],
+    runInShell: true,
+    workingDirectory: ".",
+  ).then((process) {
+    stdout.addStream(process.stdout);
+    stderr.addStream(process.stderr);
+  });
 }

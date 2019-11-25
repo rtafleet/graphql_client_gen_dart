@@ -17,7 +17,7 @@ class _$SearchReposOutputSerializer
   final String wireName = 'SearchReposOutput';
 
   @override
-  Iterable serialize(Serializers serializers, SearchReposOutput object,
+  Iterable<Object> serialize(Serializers serializers, SearchReposOutput object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'search',
@@ -29,7 +29,8 @@ class _$SearchReposOutputSerializer
   }
 
   @override
-  SearchReposOutput deserialize(Serializers serializers, Iterable serialized,
+  SearchReposOutput deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SearchReposOutputBuilder();
 
@@ -55,7 +56,8 @@ class _$SearchReposOutput extends SearchReposOutput {
   @override
   final SearchResultItemConnection search;
 
-  factory _$SearchReposOutput([void updates(SearchReposOutputBuilder b)]) =>
+  factory _$SearchReposOutput(
+          [void Function(SearchReposOutputBuilder) updates]) =>
       (new SearchReposOutputBuilder()..update(updates)).build();
 
   _$SearchReposOutput._({this.search}) : super._() {
@@ -65,7 +67,7 @@ class _$SearchReposOutput extends SearchReposOutput {
   }
 
   @override
-  SearchReposOutput rebuild(void updates(SearchReposOutputBuilder b)) =>
+  SearchReposOutput rebuild(void Function(SearchReposOutputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -120,7 +122,7 @@ class SearchReposOutputBuilder
   }
 
   @override
-  void update(void updates(SearchReposOutputBuilder b)) {
+  void update(void Function(SearchReposOutputBuilder) updates) {
     if (updates != null) updates(this);
   }
 

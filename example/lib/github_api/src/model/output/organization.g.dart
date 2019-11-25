@@ -16,7 +16,7 @@ class _$OrganizationSerializer implements StructuredSerializer<Organization> {
   final String wireName = 'Organization';
 
   @override
-  Iterable serialize(Serializers serializers, Organization object,
+  Iterable<Object> serialize(Serializers serializers, Organization object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'username',
@@ -38,12 +38,11 @@ class _$OrganizationSerializer implements StructuredSerializer<Organization> {
         ..add(serializers.serialize(object.type,
             specifiedType: const FullType(String)));
     }
-
     return result;
   }
 
   @override
-  Organization deserialize(Serializers serializers, Iterable serialized,
+  Organization deserialize(Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new OrganizationBuilder();
 
@@ -86,7 +85,7 @@ class _$Organization extends Organization {
   @override
   final String avatarUrl;
 
-  factory _$Organization([void updates(OrganizationBuilder b)]) =>
+  factory _$Organization([void Function(OrganizationBuilder) updates]) =>
       (new OrganizationBuilder()..update(updates)).build();
 
   _$Organization._({this.name, this.type, this.username, this.avatarUrl})
@@ -100,7 +99,7 @@ class _$Organization extends Organization {
   }
 
   @override
-  Organization rebuild(void updates(OrganizationBuilder b)) =>
+  Organization rebuild(void Function(OrganizationBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -176,7 +175,7 @@ class OrganizationBuilder
   }
 
   @override
-  void update(void updates(OrganizationBuilder b)) {
+  void update(void Function(OrganizationBuilder) updates) {
     if (updates != null) updates(this);
   }
 

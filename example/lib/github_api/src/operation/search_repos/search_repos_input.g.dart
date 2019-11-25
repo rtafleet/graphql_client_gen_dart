@@ -17,7 +17,7 @@ class _$SearchReposInputSerializer
   final String wireName = 'SearchReposInput';
 
   @override
-  Iterable serialize(Serializers serializers, SearchReposInput object,
+  Iterable<Object> serialize(Serializers serializers, SearchReposInput object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'queryString',
@@ -34,7 +34,8 @@ class _$SearchReposInputSerializer
   }
 
   @override
-  SearchReposInput deserialize(Serializers serializers, Iterable serialized,
+  SearchReposInput deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SearchReposInputBuilder();
 
@@ -71,7 +72,8 @@ class _$SearchReposInput extends SearchReposInput {
   @override
   final int avatarSize;
 
-  factory _$SearchReposInput([void updates(SearchReposInputBuilder b)]) =>
+  factory _$SearchReposInput(
+          [void Function(SearchReposInputBuilder) updates]) =>
       (new SearchReposInputBuilder()..update(updates)).build();
 
   _$SearchReposInput._({this.queryString, this.first, this.avatarSize})
@@ -88,7 +90,7 @@ class _$SearchReposInput extends SearchReposInput {
   }
 
   @override
-  SearchReposInput rebuild(void updates(SearchReposInputBuilder b)) =>
+  SearchReposInput rebuild(void Function(SearchReposInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -157,7 +159,7 @@ class SearchReposInputBuilder
   }
 
   @override
-  void update(void updates(SearchReposInputBuilder b)) {
+  void update(void Function(SearchReposInputBuilder) updates) {
     if (updates != null) updates(this);
   }
 
