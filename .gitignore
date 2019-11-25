@@ -13,3 +13,5 @@ pubspec.lock
 doc/api/
 
 example/.github_key.txt
+/.idea/
+.idea
