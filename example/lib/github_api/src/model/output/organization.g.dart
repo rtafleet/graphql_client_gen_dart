@@ -134,7 +134,10 @@ class _$Organization extends Organization {
 }
 
 class OrganizationBuilder
-    implements Builder<Organization, OrganizationBuilder> {
+    implements
+        Builder<Organization, OrganizationBuilder>,
+        RepositoryOwnerBuilder,
+        SearchResultItemBuilder {
   _$Organization _$v;
 
   String _name;
@@ -167,7 +170,8 @@ class OrganizationBuilder
   }
 
   @override
-  void replace(Organization other) {
+// ignore: override_on_non_overriding_method
+  void replace(covariant Organization other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }

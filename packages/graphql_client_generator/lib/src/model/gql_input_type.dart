@@ -50,9 +50,8 @@ abstract class GQLInputType
   String toJson() =>
       json.encode(serializers.serializeWith(GQLInputType.serializer, this));
 
-  static GQLInputType fromJson(String jsonString) =>
-      serializers
-          .deserializeWith(GQLInputType.serializer, json.decode(jsonString));
+  static GQLInputType fromJson(String jsonString) => serializers
+      .deserializeWith(GQLInputType.serializer, json.decode(jsonString));
 }
 
 abstract class GQLInputField
@@ -72,9 +71,8 @@ abstract class GQLInputField
   String toJson() =>
       json.encode(serializers.serializeWith(GQLInputField.serializer, this));
 
-  static GQLInputField fromJson(String jsonString) =>
-      serializers
-          .deserializeWith(GQLInputField.serializer, json.decode(jsonString));
+  static GQLInputField fromJson(String jsonString) => serializers
+      .deserializeWith(GQLInputField.serializer, json.decode(jsonString));
 }
 
 enum TypeResolutionStatus {

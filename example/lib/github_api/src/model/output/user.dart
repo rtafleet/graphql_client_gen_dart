@@ -1,8 +1,11 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:example/github_api/src/model/output/repository_owner.dart';
 import 'package:example/github_api/src/model/output/search_result_item.dart';
 import 'package:meta/meta.dart';
+
 part 'user.g.dart';
 
 /// A user is an individual's account on GitHub that owns repositories and can make new content.

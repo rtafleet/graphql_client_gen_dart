@@ -25,6 +25,7 @@ void main() async {
     await generator.generate();
   } catch (e) {
     print("error generating github client: $e");
+    return;
   }
 
   await Process.start(

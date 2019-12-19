@@ -1,6 +1,9 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:meta/meta.dart';
+
 part 'stargazer_connection.g.dart';
 
 /// The connection type for User.

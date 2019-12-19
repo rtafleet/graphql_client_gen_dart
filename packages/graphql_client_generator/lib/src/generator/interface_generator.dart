@@ -22,11 +22,12 @@ class InterfaceGenerator {
         key: (e) => e, value: (_) => typeName);
   }
 
-  InterfaceGenerator(this.typeInfo, this.fragmentDefinition, this.customScalarMap)
+  InterfaceGenerator(
+      this.typeInfo, this.fragmentDefinition, this.customScalarMap)
       : assert(typeInfo.kind == "INTERFACE" || typeInfo.kind == "UNION");
 
   Library generateLibrary(ImportResolver importResolver) {
-    final Map<String, Directive> includedImports = {};
+    final Map<String, Directive> includedImports = builtValueImportDirective();
     final List<Method> classFields = fragmentDefinition.selectionSet.selections
         .where((s) => s.field != null)
         .map((s) {
@@ -54,15 +55,42 @@ class InterfaceGenerator {
       return methodInfo.method;
     }).toList();
 
-    final classDef = Class((b) {
-      return b
-        ..name = typeName
-        ..methods.addAll(classFields)
-        ..abstract = true;
+    final builderString = "${typeName}Builder";
+
+    final rebuildMethod = Method((b) {
+      b.returns = Reference(typeName);
+      b.name = "rebuild";
+      b.requiredParameters.add(Parameter((b) {
+        b.name = "void updates($builderString b)";
+      }));
     });
 
+    final toBuilderMethod = Method((b) {
+      b.returns = Reference(builderString);
+      b.name = "toBuilder";
+    });
+
+    classFields.addAll([
+      rebuildMethod,
+      toBuilderMethod,
+    ]);
+
+    final classDef = Class((b) {
+      b.name = typeName;
+      b.methods.addAll(classFields);
+      b.abstract = true;
+      b.annotations.add(InvokeExpression.newOf(Reference("BuiltValue"), [], {
+        "instantiable": literalFalse,
+      }, []));
+    });
+
+    final List<Spec> libraryBodySpecs = [
+      partFileSpec(typeName),
+      classDef,
+    ];
+
     final library = Library((b) {
-      b.body.add(classDef);
+      b.body.addAll(libraryBodySpecs);
       b.directives.addAll(includedImports.values);
     });
     return library;

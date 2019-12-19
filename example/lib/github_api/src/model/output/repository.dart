@@ -1,9 +1,12 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
-import 'package:example/github_api/src/model/output/stargazer_connection.dart';
 import 'package:example/github_api/src/model/output/repository_owner.dart';
 import 'package:example/github_api/src/model/output/search_result_item.dart';
+import 'package:example/github_api/src/model/output/stargazer_connection.dart';
 import 'package:meta/meta.dart';
+
 part 'repository.g.dart';
 
 /// A repository contains the content for a project.

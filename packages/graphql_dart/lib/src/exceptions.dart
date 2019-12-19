@@ -100,11 +100,12 @@ class GQLException implements Exception {
 
   /// The message is derived from the underlying error, but can be explicitly set
   GQLException(
-      List rawGQLError,
-      this.queryString,
-      this.variables,
-      this.response, {this.messageOverride})
-      : gqlErrors =
+    List rawGQLError,
+    this.queryString,
+    this.variables,
+    this.response, {
+    this.messageOverride,
+  }) : gqlErrors =
             new List.from(rawGQLError.map((d) => new GQLError.fromJSON(d)));
 
   Map<String, dynamic> toJSON() {

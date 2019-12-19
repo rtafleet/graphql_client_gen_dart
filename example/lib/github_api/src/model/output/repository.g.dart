@@ -222,7 +222,8 @@ class _$Repository extends Repository {
   }
 }
 
-class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
+class RepositoryBuilder
+    implements Builder<Repository, RepositoryBuilder>, SearchResultItemBuilder {
   _$Repository _$v;
 
   String _id;
@@ -284,7 +285,7 @@ class RepositoryBuilder implements Builder<Repository, RepositoryBuilder> {
   }
 
   @override
-  void replace(Repository other) {
+  void replace(covariant Repository other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }

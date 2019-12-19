@@ -131,7 +131,11 @@ class _$User extends User {
   }
 }
 
-class UserBuilder implements Builder<User, UserBuilder> {
+class UserBuilder
+    implements
+        Builder<User, UserBuilder>,
+        RepositoryOwnerBuilder,
+        SearchResultItemBuilder {
   _$User _$v;
 
   String _name;
@@ -164,7 +168,8 @@ class UserBuilder implements Builder<User, UserBuilder> {
   }
 
   @override
-  void replace(User other) {
+// ignore: override_on_non_overriding_method
+  void replace(covariant User other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }

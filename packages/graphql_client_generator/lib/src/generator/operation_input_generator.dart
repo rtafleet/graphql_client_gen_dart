@@ -41,7 +41,8 @@ class OperationInputGenerator {
   String get typeName =>
       "${ReCase(operationDefinitionContext.name).pascalCase}Input";
 
-  OperationInputGenerator(this.operationDefinitionContext, this.schema, this.customScalarMap);
+  OperationInputGenerator(
+      this.operationDefinitionContext, this.schema, this.customScalarMap);
 
   Library generateLibrary(ImportResolver importResolver) {
     final gqlFields = operationDefinitionContext.selectionSet.selections
@@ -57,13 +58,13 @@ class OperationInputGenerator {
             ?.variableDefinitions?.variableDefinitions
             ?.map((v) {
           var typeRefForVariable = _typeRefForVariable(v, schema);
-          var descriptionForVariableName = _descriptionForVariableName(v.variable.name, gqlFields);
+          var descriptionForVariableName =
+              _descriptionForVariableName(v.variable.name, gqlFields);
 
           return InputValue((b) {
             b.name = v.variable.name;
             b.type.replace(typeRefForVariable);
-            b.description =
-                descriptionForVariableName;
+            b.description = descriptionForVariableName;
           });
         }) ??
         [];
@@ -72,7 +73,8 @@ class OperationInputGenerator {
       ..kind = "INPUT_OBJECT"
       ..name = typeName
       ..inputFields.addAll(operationInputFields));
-    final generator = InputGenerator(synthesizedInputTypeFull, true, customScalarMap);
+    final generator =
+        InputGenerator(synthesizedInputTypeFull, true, customScalarMap);
     return generator.generateLibrary(importResolver);
   }
 
