@@ -1,6 +1,6 @@
 name: graphql_client_generator
 description: A starting point for Dart libraries or applications.
-version: "0.0.1"
+version: "0.0.2"
 author: Dustin Graham <dgraham@rtafleet.com>
 # homepage: https://www.example.com
 
@@ -12,7 +12,7 @@ dependencies:
   built_collection: ^4.1.0
   graphql_dart: any
   source_gen: ^0.9.3
-  recase: ^2.0.0+1
+  recase: ^3.0.0
   graphql_parser: ^1.1.3
   build_runner: ^1.1.2
   built_value_generator: ^6.2.0
