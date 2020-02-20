@@ -72,15 +72,18 @@ abstract class InputTypeDetails extends Object
 abstract class EnumTypeDetails extends Object
     with TypeDetails
     implements Built<EnumTypeDetails, EnumTypeDetailsBuilder> {
-  static Serializer<EnumTypeDetails> get serializer => _$enumTypeDetailsSerializer;
+  static Serializer<EnumTypeDetails> get serializer =>
+      _$enumTypeDetailsSerializer;
   EnumTypeDetails._();
 
   BuiltList<GQLEnumValue> get enumValues;
 
   factory EnumTypeDetails([updates(EnumTypeDetailsBuilder b)]) =
       _$EnumTypeDetails;
-  String toJson() => json.encode(serializers.serializeWith(EnumTypeDetails.serializer, this));
-  static EnumTypeDetails fromJson(String jsonString) => serializers.deserializeWith(EnumTypeDetails.serializer, json.decode(jsonString));
+  String toJson() =>
+      json.encode(serializers.serializeWith(EnumTypeDetails.serializer, this));
+  static EnumTypeDetails fromJson(String jsonString) => serializers
+      .deserializeWith(EnumTypeDetails.serializer, json.decode(jsonString));
 }
 
 abstract class GQLEnumValue
@@ -91,8 +94,10 @@ abstract class GQLEnumValue
   String get name;
 
   factory GQLEnumValue([updates(GQLEnumValueBuilder b)]) = _$GQLEnumValue;
-  String toJson() => json.encode(serializers.serializeWith(GQLEnumValue.serializer, this));
-  static GQLEnumValue fromJson(String jsonString) => serializers.deserializeWith(GQLEnumValue.serializer, json.decode(jsonString));
+  String toJson() =>
+      json.encode(serializers.serializeWith(GQLEnumValue.serializer, this));
+  static GQLEnumValue fromJson(String jsonString) => serializers
+      .deserializeWith(GQLEnumValue.serializer, json.decode(jsonString));
 }
 
 abstract class GQLField implements Built<GQLField, GQLFieldBuilder> {

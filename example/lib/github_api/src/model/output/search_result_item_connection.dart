@@ -1,8 +1,11 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:example/github_api/src/model/output/search_result_item.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:meta/meta.dart';
+
 part 'search_result_item_connection.g.dart';
 
 /// A list of results that matched against a search query.

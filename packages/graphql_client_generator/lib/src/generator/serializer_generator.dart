@@ -19,7 +19,7 @@ class SerializerGenerator {
       ..assignment = Code(
           "(_\$serializers.toBuilder()..addPlugin(${ReCase(clientName).pascalCase}JsonPlugin(StandardJsonPlugin()))).build()")
       ..annotations.add(CodeExpression(Code("SerializersFor"))
-          .call([literalConstList(serializableTypes)])));
+          .call([literalList(serializableTypes)])));
     final serializer = Library((b) {
       b.body.addAll(<Spec>[
         Code("part 'serializers.g.dart';\n"),

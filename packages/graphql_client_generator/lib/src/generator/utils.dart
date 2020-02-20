@@ -154,14 +154,20 @@ class MethodInfo {
 }
 
 Spec partFileSpec(String fileName) {
-  return Code("part '$fileName.g.dart';");
+  return Code("part '${ReCase(fileName).snakeCase}.g.dart';");
+}
+
+Map<String, Directive> builtValueImportDirective() {
+  return {
+    "built_value": Directive.import("package:built_value/built_value.dart"),
+  };
 }
 
 Map<String, Directive> standardBuiltValueImportDirectives() {
-  return {
-    "built_value": Directive.import("package:built_value/built_value.dart"),
-    "serializer": Directive.import("package:built_value/serializer.dart"),
-  };
+  return builtValueImportDirective()
+    ..addAll({
+      "serializer": Directive.import("package:built_value/serializer.dart"),
+    });
 }
 
 bool operationHasInputs(OperationDefinitionContext operationDefinition) {

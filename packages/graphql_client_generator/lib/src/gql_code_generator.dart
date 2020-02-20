@@ -173,7 +173,8 @@ class GQLCodeGenerator {
           enumGenerators[inputTypeName] = EnumGenerator(input);
         } else if (input.kind == "INPUT_OBJECT" &&
             !inputGenerators.containsKey(inputTypeName)) {
-          inputGenerators[inputTypeName] = InputGenerator(input, false, customScalarMap);
+          inputGenerators[inputTypeName] =
+              InputGenerator(input, false, customScalarMap);
         }
       }
 
@@ -300,7 +301,8 @@ class GQLCodeGenerator {
       // build the input object if there are inputs required
       OperationInputGenerator inputGenerator;
       if (operation.variableDefinitions != null) {
-        inputGenerator = OperationInputGenerator(operation, wholeSchema, customScalarMap);
+        inputGenerator =
+            OperationInputGenerator(operation, wholeSchema, customScalarMap);
       }
 
       // build the operation output object
@@ -516,7 +518,11 @@ class GQLCodeGenerator {
   }
 
   String _specToString(Spec spec) {
-    return _dartfmt.format('${spec.accept(DartEmitter())}');
+    return _dartfmt.format('''
+    // GENERATED CODE - DO NOT MODIFY BY HAND
+    
+    ${spec.accept(DartEmitter())}
+    ''');
   }
 
   Directory _directoryFromParent(Directory parent, String directoryName) {

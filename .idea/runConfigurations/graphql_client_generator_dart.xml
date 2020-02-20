@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="graphql_client_generator.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" nameIsGenerated="true">
-    <option name="arguments" value="-u &quot;https://staging.api.rtafleet.com/graphql&quot; -f ../example/lib/fragments.gql -p ../example/lib/operations.gql -o ../example/lib/ -n fleet_api -a &quot;Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9UWTVNVUk1TXpKQk9EWkdSVUU0TXpReVFURTVNRU0zTWpKQ05ESXlOa016T0VVek9URXdOdyJ9.eyJodHRwczovL2FwaS5ydGFmbGVldC5jb20vYXBwX21ldGFkYXRhIjp7ImlkIjoiZGdyYWhhbUBzdGFnZS5ydGEtaG9zdC5jb20iLCJjbGllbnREYXRhIjp7fX0sImlzcyI6Imh0dHBzOi8vZGV2LXJ0YS5hdXRoMC5jb20vIiwic3ViIjoid2FhZHxVdVpGcnZFUUl0T19URVA1S3gwSl9DMTNkSml5RXRpZk1jZFoxbFBRTWNrIiwiYXVkIjpbImh0dHBzOi8vYXBpLnJ0YWZsZWV0LmNvbSIsImh0dHBzOi8vZGV2LXJ0YS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNTQ4OTQ5MzkwLCJleHAiOjE1NTE1NDEzOTAsImF6cCI6InpuOGxjenlmYUdXOWdlMjhLZTM3V3Mzd1NiMVQ1RXdXIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBvZmZsaW5lX2FjY2VzcyJ9.Gwmu_Jd-EQ88T-M-_QPG0hJP43asnkXAoXohbiSRTrGPAPuAvAFh4rsgLXmOM-HgZhYlsWKm_a0B35AR_aorg1ut8VYCXQQNQpgKNxvghkxzWzih8R9AahBc1eUuD_Cz8O5lGYvxtCNdBu7aXs-IVqzkaGGNdgdzdfbTRRB9FvbhvhCoSClucs5pajtj8c2Ub3p4FVrSLekU_9EFQBKsLoz9tGIDoHl6uguirdgZV5k0UEsxADRBuPN8unhtOH-ET88dpXxSjHBdE77G4Ja4gmoh4CKEDpsznayHzl-7cs6YoccUl2zE6b-RV7mQntMoADqvIJaWD3pQ_RKSepPQHg&quot; -c example" />
-    <option name="filePath" value="$PROJECT_DIR$/packages/graphql_client_generator/bin/graphql_client_generator.dart" />
-    <option name="workingDirectory" value="$PROJECT_DIR$/graphql_client_generator" />
-    <method v="2" />
-  </configuration>
-</component>

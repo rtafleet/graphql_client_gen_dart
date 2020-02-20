@@ -1,7 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:example/github_api/src/serializers.dart';
 import 'package:meta/meta.dart';
+
 part 'search_repos_input.g.dart';
 
 abstract class SearchReposInput

@@ -13,8 +13,10 @@ class GQLClient {
   GQLClient(this.client, this.url, this.headers,
       {this.encoding = const Utf8Codec()});
 
-  Future<Map<String, dynamic>> upload(String queryString, {Map<String, dynamic> args}) async {
-
+  Future<Map<String, dynamic>> upload(
+    String queryString, {
+    Map<String, dynamic> args,
+  }) async {
     Map<String, dynamic> operations = <String, dynamic>{
       'variables': args,
       'query': queryString
@@ -35,12 +37,11 @@ class GQLClient {
       );
     }
 
-
     final Map<String, dynamic> jsonResponse = json.decode(stringBody);
 
     if (jsonResponse['errors'] != null && jsonResponse['errors'].length > 0) {
       var gqlException =
-      GQLException(jsonResponse['errors'], queryString, args, jsonResponse);
+          GQLException(jsonResponse['errors'], queryString, args, jsonResponse);
       if (GQLExceptionReporter.gqlExceptionHandler != null) {
         GQLExceptionReporter.gqlExceptionHandler(gqlException);
       }
@@ -52,10 +53,10 @@ class GQLClient {
 
   // https://github.com/zino-app/graphql-flutter/blob/75d02c28154c6b5c2aacea4cfde623c8cdbe443d/packages/graphql/lib/src/link/http/link_http.dart
   Future<Map<String, MultipartFile>> _getFileMap(
-      dynamic body, {
-        Map<String, MultipartFile> currentMap,
-        List<String> currentPath = const <String>[],
-      }) async {
+    dynamic body, {
+    Map<String, MultipartFile> currentMap,
+    List<String> currentPath = const <String>[],
+  }) async {
     currentMap ??= <String, MultipartFile>{};
     if (body is Map<String, dynamic>) {
       final Iterable<MapEntry<String, dynamic>> entries = body.entries;
@@ -88,10 +89,10 @@ class GQLClient {
   }
 
   Future<BaseRequest> _prepareRequest(
-      String url,
-      Map<String, dynamic> body,
-      Map<String, String> httpHeaders,
-      ) async {
+    String url,
+    Map<String, dynamic> body,
+    Map<String, String> httpHeaders,
+  ) async {
     final Map<String, MultipartFile> fileMap = await _getFileMap(body);
     if (fileMap.isEmpty) {
       final Request r = Request('post', Uri.parse(url));
@@ -113,7 +114,7 @@ class GQLClient {
     final List<MultipartFile> fileList = <MultipartFile>[];
 
     final List<MapEntry<String, MultipartFile>> fileMapEntries =
-    fileMap.entries.toList(growable: false);
+        fileMap.entries.toList(growable: false);
 
     for (int i = 0; i < fileMapEntries.length; i++) {
       final MapEntry<String, MultipartFile> entry = fileMapEntries[i];

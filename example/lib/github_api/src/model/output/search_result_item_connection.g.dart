@@ -20,7 +20,8 @@ class _$SearchResultItemConnectionSerializer
   final String wireName = 'SearchResultItemConnection';
 
   @override
-  Iterable serialize(Serializers serializers, SearchResultItemConnection object,
+  Iterable<Object> serialize(
+      Serializers serializers, SearchResultItemConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'repositoryCount',
@@ -34,13 +35,12 @@ class _$SearchResultItemConnectionSerializer
             specifiedType: const FullType(
                 BuiltList, const [const FullType(SearchResultItem)])));
     }
-
     return result;
   }
 
   @override
   SearchResultItemConnection deserialize(
-      Serializers serializers, Iterable serialized,
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new SearchResultItemConnectionBuilder();
 
@@ -58,7 +58,7 @@ class _$SearchResultItemConnectionSerializer
           result.nodes.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
                       BuiltList, const [const FullType(SearchResultItem)]))
-              as BuiltList);
+              as BuiltList<dynamic>);
           break;
       }
     }
@@ -74,7 +74,7 @@ class _$SearchResultItemConnection extends SearchResultItemConnection {
   final BuiltList<SearchResultItem> nodes;
 
   factory _$SearchResultItemConnection(
-          [void updates(SearchResultItemConnectionBuilder b)]) =>
+          [void Function(SearchResultItemConnectionBuilder) updates]) =>
       (new SearchResultItemConnectionBuilder()..update(updates)).build();
 
   _$SearchResultItemConnection._({this.repositoryCount, this.nodes})
@@ -87,7 +87,7 @@ class _$SearchResultItemConnection extends SearchResultItemConnection {
 
   @override
   SearchResultItemConnection rebuild(
-          void updates(SearchResultItemConnectionBuilder b)) =>
+          void Function(SearchResultItemConnectionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -151,7 +151,7 @@ class SearchResultItemConnectionBuilder
   }
 
   @override
-  void update(void updates(SearchResultItemConnectionBuilder b)) {
+  void update(void Function(SearchResultItemConnectionBuilder) updates) {
     if (updates != null) updates(this);
   }
 

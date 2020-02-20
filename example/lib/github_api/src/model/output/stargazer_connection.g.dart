@@ -20,7 +20,8 @@ class _$StargazerConnectionSerializer
   final String wireName = 'StargazerConnection';
 
   @override
-  Iterable serialize(Serializers serializers, StargazerConnection object,
+  Iterable<Object> serialize(
+      Serializers serializers, StargazerConnection object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'totalCount',
@@ -32,7 +33,8 @@ class _$StargazerConnectionSerializer
   }
 
   @override
-  StargazerConnection deserialize(Serializers serializers, Iterable serialized,
+  StargazerConnection deserialize(
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new StargazerConnectionBuilder();
 
@@ -57,7 +59,8 @@ class _$StargazerConnection extends StargazerConnection {
   @override
   final int totalCount;
 
-  factory _$StargazerConnection([void updates(StargazerConnectionBuilder b)]) =>
+  factory _$StargazerConnection(
+          [void Function(StargazerConnectionBuilder) updates]) =>
       (new StargazerConnectionBuilder()..update(updates)).build();
 
   _$StargazerConnection._({this.totalCount}) : super._() {
@@ -67,7 +70,8 @@ class _$StargazerConnection extends StargazerConnection {
   }
 
   @override
-  StargazerConnection rebuild(void updates(StargazerConnectionBuilder b)) =>
+  StargazerConnection rebuild(
+          void Function(StargazerConnectionBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -120,7 +124,7 @@ class StargazerConnectionBuilder
   }
 
   @override
-  void update(void updates(StargazerConnectionBuilder b)) {
+  void update(void Function(StargazerConnectionBuilder) updates) {
     if (updates != null) updates(this);
   }
 

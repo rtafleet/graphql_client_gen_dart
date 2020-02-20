@@ -1,7 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 import 'dart:async';
-import 'package:graphql_dart/graphql_dart.dart';
-import 'package:example/github_api/src/operation/search_repos/search_repos_output.dart';
+
 import 'package:example/github_api/src/operation/search_repos/search_repos_input.dart';
+import 'package:example/github_api/src/operation/search_repos/search_repos_output.dart';
+import 'package:graphql_dart/graphql_dart.dart';
 
 var _searchReposDoc = """
 query searchRepos(\$queryString: String!, \$first: Int!, \$avatarSize: Int!) {
