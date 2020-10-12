@@ -549,8 +549,8 @@ class GQLCodeGenerator {
     return requiredTypes;
   }
 
-  List<TypeFull> gatherRequiredTypesForRootInputType(
-      TypeFull typeFull, Schema schema) {
+ List<TypeFull> gatherRequiredTypesForRootInputType(
+      TypeFull typeFull, Schema schema, {int level = 0}) {
     assert(typeFull.kind == "INPUT_OBJECT");
     List<TypeFull> requiredTypes = [];
     for (var inputValue in typeFull.inputFields) {
@@ -560,10 +560,12 @@ class GQLCodeGenerator {
         requiredTypes.add(typeForName);
         continue;
       }
-      if (concreteType.kind == "INPUT_OBJECT") {
+      print(concreteType);
+      print(typeForName);
+      if (concreteType.kind == "INPUT_OBJECT" && level == 0) {
         requiredTypes
           ..add(typeForName)
-          ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema));
+          ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema, level: 1));
       }
     }
     return requiredTypes;
