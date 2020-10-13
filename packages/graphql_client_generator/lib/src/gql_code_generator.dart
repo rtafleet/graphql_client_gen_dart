@@ -543,7 +543,8 @@ class GQLCodeGenerator {
     // we need to generate a type for this one at least
     final fullType = schema.typeForName(typeContext.typeName.name);
     if (fullType == null) {
-      throw "The type, ${typeContext.typeName.name} could not be found in schema";
+      throw "The type, ${typeContext.typeName
+          .name} could not be found in schema";
     }
     final requiredTypes = <TypeFull>[fullType];
     // go through each of its inputFields and find all the other types that need to come along
@@ -551,7 +552,10 @@ class GQLCodeGenerator {
       requiredTypes
           .addAll(gatherRequiredTypesForRootInputType(fullType, schema));
     }
-    return requiredTypes;List<TypeFull> gatherRequiredTypesForRootInputType(
+    return requiredTypes;
+  }
+
+  List<TypeFull> gatherRequiredTypesForRootInputType(
         TypeFull typeFull, Schema schema, {int level = 0, previousName = ""}) {
       assert(typeFull.kind == "INPUT_OBJECT");
       List<TypeFull> requiredTypes = [];
@@ -571,7 +575,6 @@ class GQLCodeGenerator {
       }
       return requiredTypes;
     }
-  }
 
 
 
