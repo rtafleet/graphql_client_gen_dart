@@ -165,6 +165,8 @@ class GQLCodeGenerator {
         });
       }
 
+      print(inputs);
+
       // make generators for each of the inputs
       for (var input in inputs) {
         var inputTypeName = input.name;
@@ -201,6 +203,7 @@ class GQLCodeGenerator {
         final List<ArgumentContext> documentArgs =
             List.of(operationSelection.field.arguments);
         // each document arg should match a variable in the enclosing operation group
+        print(documentArgs);
         for (var documentArg in documentArgs) {
           if (documentArg.valueOrVariable.variable != null) {
             final matchingArg = operation
@@ -313,6 +316,8 @@ class GQLCodeGenerator {
           fullOperationType, operation, true, null, null, customScalarMap,
           typeNameSuffix: "Output");
 
+
+      print(operation);
       // assemble the operation group
       final operationGenerator = OperationGenerator(
           operation,
@@ -546,30 +551,29 @@ class GQLCodeGenerator {
       requiredTypes
           .addAll(gatherRequiredTypesForRootInputType(fullType, schema));
     }
-    return requiredTypes;
+    return requiredTypes;List<TypeFull> gatherRequiredTypesForRootInputType(
+        TypeFull typeFull, Schema schema, {int level = 0, previousName = ""}) {
+      assert(typeFull.kind == "INPUT_OBJECT");
+      List<TypeFull> requiredTypes = [];
+      for (var inputValue in typeFull.inputFields) {
+        final concreteType = inputValue.type.concreteType;
+        var typeForName = schema.typeForName(concreteType.name);
+        if (concreteType.kind == "ENUM") {
+          requiredTypes.add(typeForName);
+          continue;
+        }
+
+        if (concreteType.kind == "INPUT_OBJECT" && previousName != concreteType.name) {
+          requiredTypes
+            ..add(typeForName)
+            ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema, level: 1, previousName: concreteType.name));
+        }
+      }
+      return requiredTypes;
+    }
   }
 
- List<TypeFull> gatherRequiredTypesForRootInputType(
-      TypeFull typeFull, Schema schema, {int level = 0}) {
-    assert(typeFull.kind == "INPUT_OBJECT");
-    List<TypeFull> requiredTypes = [];
-    for (var inputValue in typeFull.inputFields) {
-      final concreteType = inputValue.type.concreteType;
-      var typeForName = schema.typeForName(concreteType.name);
-      if (concreteType.kind == "ENUM") {
-        requiredTypes.add(typeForName);
-        continue;
-      }
-      print(concreteType);
-      print(typeForName);
-      if (concreteType.kind == "INPUT_OBJECT" && level == 0) {
-        requiredTypes
-          ..add(typeForName)
-          ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema, level: 1));
-      }
-    }
-    return requiredTypes;
-  }
+
 
   List<EnumGenerator> requiredEnumsForType(TypeFull type, Schema schema) {
     return type.enumTypeRefs
