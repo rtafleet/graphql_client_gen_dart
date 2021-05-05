@@ -7,17 +7,19 @@ environment:
   sdk: '>=2.0.0 <3.0.0'
 
 dependencies:
-  built_value: ^6.1.1
-  built_collection: ^4.0.0
+  built_value: ^8.0.5
+  built_collection: ^5.0.0
   graphql_dart: any
 
 dev_dependencies:
   test: ^1.0.0
   graphql_client_generator: any
-  build_runner: ^1.1.2
-  built_value_generator: ^6.2.0
+  build_runner: ^2.0.2
+  built_value_generator: ^8.0.5
 
 dependency_overrides:
+  build_config: ^1.0.0
+  build_runner: ^2.0.2
   graphql_client_generator:
     path: ../packages/graphql_client_generator
   graphql_dart:
