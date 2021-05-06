@@ -151,10 +151,20 @@ class ObjectGenerator<C extends DefinitionContext> {
     }
 
     if (interfaceType != null) {
-      // add this to the includedImports list
-      final interfaceImport =
-          importResolver.outputModelNamed(interfaceType.name);
-      includedImports[interfaceType.name] = interfaceImport;
+      if(customInterfaceOverrides[interfaceType.name] != null)
+        {
+          // add this to the includedImports list
+          final interfaceImport =
+          importResolver.outputModelNamed(customInterfaceOverrides[interfaceType.name]);
+          includedImports[customInterfaceOverrides[interfaceType.name]] = interfaceImport;
+        }
+      else {
+        // add this to the includedImports list
+        final interfaceImport =
+        importResolver.outputModelNamed(interfaceType.name);
+        includedImports[interfaceType.name] = interfaceImport;
+      }
+
     }
     if (unionTypes != null) {
       for (var union in unionTypes) {
