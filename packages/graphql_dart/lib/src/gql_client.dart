@@ -24,7 +24,7 @@ class GQLClient {
     };
 
     final response = await client.post(
-      Uri.dataFromString(url),
+      Uri.parse(url),
       headers: standardHeaders..addAll(headers),
       body: json.encode(body),
     );
