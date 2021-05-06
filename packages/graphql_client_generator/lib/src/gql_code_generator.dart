@@ -32,6 +32,7 @@ class GQLCodeGenerator {
   final String libraryName;
   final String packageName;
   final String url;
+  final Map<String, String> customInterfaceOverrides;
 
   GQLCodeGenerator(
       {this.gql,
@@ -41,6 +42,7 @@ class GQLCodeGenerator {
       this.customScalarMapPath,
       this.libraryName,
       this.packageName,
+        this.customInterfaceOverrides,
       this.url});
 
   Future generate() async {
@@ -176,7 +178,7 @@ class GQLCodeGenerator {
         } else if (input.kind == "INPUT_OBJECT" &&
             !inputGenerators.containsKey(inputTypeName)) {
           inputGenerators[inputTypeName] =
-              InputGenerator(input, false, customScalarMap);
+              InputGenerator(input, false, customScalarMap, customInterfaceOverrides);
         }
       }
 
@@ -297,7 +299,7 @@ class GQLCodeGenerator {
         }
         final unions = unionMap[typeName];
         objectGenerators[fragmentName] = ObjectGenerator(
-            fullType, definition, false, interfaceType, unions, customScalarMap,
+            fullType, customInterfaceOverrides, definition, false, interfaceType, unions, customScalarMap,
             interfaceFragmentDefinitionContext: interfaceDefinition);
       }
 
@@ -305,7 +307,7 @@ class GQLCodeGenerator {
       OperationInputGenerator inputGenerator;
       if (operation.variableDefinitions != null) {
         inputGenerator =
-            OperationInputGenerator(operation, wholeSchema, customScalarMap);
+            OperationInputGenerator(operation, wholeSchema, customScalarMap, customInterfaceOverrides);
       }
 
       // build the operation output object
@@ -313,7 +315,7 @@ class GQLCodeGenerator {
           ? wholeSchema.fullQueryType
           : wholeSchema.fullMutationType;
       final outputGenerator = ObjectGenerator(
-          fullOperationType, operation, true, null, null, customScalarMap,
+          fullOperationType, customInterfaceOverrides, operation, true, null, null, customScalarMap,
           typeNameSuffix: "Output");
 
 

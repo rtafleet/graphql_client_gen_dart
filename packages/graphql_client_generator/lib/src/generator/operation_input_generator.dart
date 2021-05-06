@@ -37,12 +37,13 @@ class OperationInputGenerator {
   final OperationDefinitionContext operationDefinitionContext;
   final Schema schema;
   final CustomScalarMap customScalarMap;
+  final Map<String, String> customInterfaceOverrides;
 
   String get typeName =>
       "${ReCase(operationDefinitionContext.name).pascalCase}Input";
 
   OperationInputGenerator(
-      this.operationDefinitionContext, this.schema, this.customScalarMap);
+      this.operationDefinitionContext, this.schema, this.customScalarMap, this.customInterfaceOverrides);
 
   Library generateLibrary(ImportResolver importResolver) {
     final gqlFields = operationDefinitionContext.selectionSet.selections
@@ -74,7 +75,7 @@ class OperationInputGenerator {
       ..name = typeName
       ..inputFields.addAll(operationInputFields));
     final generator =
-        InputGenerator(synthesizedInputTypeFull, true, customScalarMap);
+        InputGenerator(synthesizedInputTypeFull, true, customScalarMap, customInterfaceOverrides);
     return generator.generateLibrary(importResolver);
   }
 

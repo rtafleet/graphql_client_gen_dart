@@ -196,6 +196,7 @@ Parameter _methodInfoToParameter(MethodInfo mi, bool required) {
 
 Class standardBuiltValueClass(
   String typeName,
+  Map<String, String> customInterfaceOverrides,
   List<MethodInfo> classFields,
   List<MethodInfo> otherMembers,
   List<MethodInfo> nonNullInterfaceFields, {
@@ -210,7 +211,13 @@ Class standardBuiltValueClass(
   });
   final references = <Reference>[builtValueReference];
   if (interfaceName != null) {
-    references.add(refer(interfaceName));
+    if(customInterfaceOverrides[typeName] != null)
+      {
+        references.add(refer(customInterfaceOverrides[typeName]));
+      }
+    else {
+      references.add(refer(interfaceName));
+    }
   }
   if (unionNames != null) {
     for (var union in unionNames) {

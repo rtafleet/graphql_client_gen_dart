@@ -16,6 +16,7 @@ class ObjectGenerator<C extends DefinitionContext> {
   final FragmentDefinitionContext interfaceFragmentDefinitionContext;
   final String typeNameSuffix;
   final CustomScalarMap customScalarMap;
+  final Map<String, String> customInterfaceOverrides;
 
   String get fragmentName {
     String name;
@@ -46,6 +47,7 @@ class ObjectGenerator<C extends DefinitionContext> {
 
   ObjectGenerator(
     this.typeInfo,
+    this.customInterfaceOverrides,
     this.definitionContext,
     this.addGQLMapDeserializer,
     this.interfaceType,
@@ -162,6 +164,7 @@ class ObjectGenerator<C extends DefinitionContext> {
     }
     final classDef = standardBuiltValueClass(
       fragmentName,
+      customInterfaceOverrides,
       classFields,
       otherMembers,
       nonNullInterfaceFields,
