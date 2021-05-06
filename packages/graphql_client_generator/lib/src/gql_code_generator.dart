@@ -114,7 +114,7 @@ class GQLCodeGenerator {
         final Map<String, String> implementationMap = Map.fromIterable(
             implementationFragmentNames,
             key: (e) => e,
-            value: (_) => fragmentDefinition.name);
+            value: (_) => typeName);
         interfaceImplementations.addAll(implementationMap);
         interfaceGenerators[fragmentDefinition.name] =
             InterfaceGenerator(fullType, fragmentDefinition, customScalarMap);
