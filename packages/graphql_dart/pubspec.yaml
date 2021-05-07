@@ -8,6 +8,7 @@ environment:
   sdk: '>=2.0.0 <3.0.0'
 
 dependencies:
+  http: ^0.13.3
   graphql_parser: ^1.0.0
 
 dev_dependencies:

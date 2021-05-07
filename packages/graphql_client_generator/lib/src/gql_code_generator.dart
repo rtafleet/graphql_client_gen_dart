@@ -32,6 +32,7 @@ class GQLCodeGenerator {
   final String libraryName;
   final String packageName;
   final String url;
+  final Map<String, String> customInterfaceOverrides;
 
   GQLCodeGenerator(
       {this.gql,
@@ -41,6 +42,7 @@ class GQLCodeGenerator {
       this.customScalarMapPath,
       this.libraryName,
       this.packageName,
+        this.customInterfaceOverrides,
       this.url});
 
   Future generate() async {
@@ -114,7 +116,7 @@ class GQLCodeGenerator {
         final Map<String, String> implementationMap = Map.fromIterable(
             implementationFragmentNames,
             key: (e) => e,
-            value: (_) => fragmentDefinition.name);
+            value: (_) => typeName);
         interfaceImplementations.addAll(implementationMap);
         interfaceGenerators[fragmentDefinition.name] =
             InterfaceGenerator(fullType, fragmentDefinition, customScalarMap);
@@ -174,7 +176,7 @@ class GQLCodeGenerator {
         } else if (input.kind == "INPUT_OBJECT" &&
             !inputGenerators.containsKey(inputTypeName)) {
           inputGenerators[inputTypeName] =
-              InputGenerator(input, false, customScalarMap);
+              InputGenerator(input, false, customScalarMap, customInterfaceOverrides);
         }
       }
 
@@ -201,6 +203,7 @@ class GQLCodeGenerator {
         final List<ArgumentContext> documentArgs =
             List.of(operationSelection.field.arguments);
         // each document arg should match a variable in the enclosing operation group
+        print(documentArgs);
         for (var documentArg in documentArgs) {
           if (documentArg.valueOrVariable.variable != null) {
             final matchingArg = operation
@@ -289,12 +292,12 @@ class GQLCodeGenerator {
           interfaceType =
               wholeSchema.types.firstWhere((t) => t.name == interfaceName);
           interfaceDefinition = allRequiredFragments.firstWhere((f) {
-            return f.name == interfaceName;
+            return f.typeCondition.typeName.name == interfaceName;
           }, orElse: () => throw "interface not found for type: $fragmentName");
         }
         final unions = unionMap[typeName];
         objectGenerators[fragmentName] = ObjectGenerator(
-            fullType, definition, false, interfaceType, unions, customScalarMap,
+            fullType, customInterfaceOverrides, definition, false, interfaceType, unions, customScalarMap,
             interfaceFragmentDefinitionContext: interfaceDefinition);
       }
 
@@ -302,7 +305,7 @@ class GQLCodeGenerator {
       OperationInputGenerator inputGenerator;
       if (operation.variableDefinitions != null) {
         inputGenerator =
-            OperationInputGenerator(operation, wholeSchema, customScalarMap);
+            OperationInputGenerator(operation, wholeSchema, customScalarMap, customInterfaceOverrides);
       }
 
       // build the operation output object
@@ -310,9 +313,11 @@ class GQLCodeGenerator {
           ? wholeSchema.fullQueryType
           : wholeSchema.fullMutationType;
       final outputGenerator = ObjectGenerator(
-          fullOperationType, operation, true, null, null, customScalarMap,
+          fullOperationType, customInterfaceOverrides, operation, true, null, null, customScalarMap,
           typeNameSuffix: "Output");
 
+
+      print(operation);
       // assemble the operation group
       final operationGenerator = OperationGenerator(
           operation,
@@ -538,7 +543,8 @@ class GQLCodeGenerator {
     // we need to generate a type for this one at least
     final fullType = schema.typeForName(typeContext.typeName.name);
     if (fullType == null) {
-      throw "The type, ${typeContext.typeName.name} could not be found in schema";
+      throw "The type, ${typeContext.typeName
+          .name} could not be found in schema";
     }
     final requiredTypes = <TypeFull>[fullType];
     // go through each of its inputFields and find all the other types that need to come along
@@ -550,24 +556,27 @@ class GQLCodeGenerator {
   }
 
   List<TypeFull> gatherRequiredTypesForRootInputType(
-      TypeFull typeFull, Schema schema) {
-    assert(typeFull.kind == "INPUT_OBJECT");
-    List<TypeFull> requiredTypes = [];
-    for (var inputValue in typeFull.inputFields) {
-      final concreteType = inputValue.type.concreteType;
-      var typeForName = schema.typeForName(concreteType.name);
-      if (concreteType.kind == "ENUM") {
-        requiredTypes.add(typeForName);
-        continue;
+        TypeFull typeFull, Schema schema, {int level = 0, previousName = ""}) {
+      assert(typeFull.kind == "INPUT_OBJECT");
+      List<TypeFull> requiredTypes = [];
+      for (var inputValue in typeFull.inputFields) {
+        final concreteType = inputValue.type.concreteType;
+        var typeForName = schema.typeForName(concreteType.name);
+        if (concreteType.kind == "ENUM") {
+          requiredTypes.add(typeForName);
+          continue;
+        }
+
+        if (concreteType.kind == "INPUT_OBJECT" && previousName != concreteType.name) {
+          requiredTypes
+            ..add(typeForName)
+            ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema, level: 1, previousName: concreteType.name));
+        }
       }
-      if (concreteType.kind == "INPUT_OBJECT") {
-        requiredTypes
-          ..add(typeForName)
-          ..addAll(gatherRequiredTypesForRootInputType(typeForName, schema));
-      }
+      return requiredTypes;
     }
-    return requiredTypes;
-  }
+
+
 
   List<EnumGenerator> requiredEnumsForType(TypeFull type, Schema schema) {
     return type.enumTypeRefs

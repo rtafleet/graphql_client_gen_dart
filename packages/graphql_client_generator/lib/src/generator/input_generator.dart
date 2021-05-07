@@ -9,6 +9,7 @@ class InputGenerator {
   final TypeFull typeInfo;
   final bool addGQLMapSerializer;
   final CustomScalarMap customScalarMap;
+  final Map<String, String> customInterfaceOverrides;
 
   String get fileName => ReCase(typeName).snakeCase;
 
@@ -20,6 +21,7 @@ class InputGenerator {
     this.typeInfo,
     this.addGQLMapSerializer,
     this.customScalarMap,
+      this.customInterfaceOverrides,
   ) : assert(typeInfo.kind == "INPUT_OBJECT");
 
   Library generateLibrary(ImportResolver importResolver) {
@@ -59,7 +61,7 @@ class InputGenerator {
     }
 
     final classDef = standardBuiltValueClass(
-        typeName, classFields, otherMembers, <MethodInfo>[],
+        typeName, customInterfaceOverrides, classFields, otherMembers, <MethodInfo>[],
         description: typeInfo.description);
     libraryBodySpecs.add(classDef);
 
