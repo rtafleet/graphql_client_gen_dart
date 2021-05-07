@@ -167,8 +167,6 @@ class GQLCodeGenerator {
         });
       }
 
-      print(inputs);
-
       // make generators for each of the inputs
       for (var input in inputs) {
         var inputTypeName = input.name;
@@ -294,7 +292,7 @@ class GQLCodeGenerator {
           interfaceType =
               wholeSchema.types.firstWhere((t) => t.name == interfaceName);
           interfaceDefinition = allRequiredFragments.firstWhere((f) {
-            return f.name == interfaceName;
+            return f.typeCondition.typeName.name == interfaceName;
           }, orElse: () => throw "interface not found for type: $fragmentName");
         }
         final unions = unionMap[typeName];

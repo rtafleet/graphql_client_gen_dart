@@ -151,12 +151,12 @@ class ObjectGenerator<C extends DefinitionContext> {
     }
 
     if (interfaceType != null) {
-      if(customInterfaceOverrides[interfaceType.name] != null)
+      if(customInterfaceOverrides[fragmentName] != null)
         {
           // add this to the includedImports list
           final interfaceImport =
-          importResolver.outputModelNamed(customInterfaceOverrides[interfaceType.name]);
-          includedImports[customInterfaceOverrides[interfaceType.name]] = interfaceImport;
+          importResolver.outputModelNamed(customInterfaceOverrides[fragmentName]);
+          includedImports[customInterfaceOverrides[fragmentName]] = interfaceImport;
         }
       else {
         // add this to the includedImports list
