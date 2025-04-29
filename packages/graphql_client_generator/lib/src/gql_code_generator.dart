@@ -19,7 +19,7 @@ import 'package:graphql_client_generator/src/model/type.dart';
 import 'package:graphql_client_generator/src/utils/import_resolver.dart';
 import 'package:graphql_client_generator/src/whole_schema/whole_schema_query.dart';
 import 'package:graphql_dart/graphql_dart.dart';
-import 'package:graphql_parser/graphql_parser.dart';
+import 'package:graphql_parser2/graphql_parser2.dart';
 import 'package:recase/recase.dart';
 
 class GQLCodeGenerator {
@@ -28,24 +28,25 @@ class GQLCodeGenerator {
   final String fragmentFilePath;
   final String operationsFilePath;
   final String outputDirectoryPath;
-  final String customScalarMapPath;
+  final String? customScalarMapPath;
   final String libraryName;
   final String packageName;
   final String url;
   final Map<String, String> customInterfaceOverrides;
 
-  GQLCodeGenerator(
-      {this.gql,
-      this.fragmentFilePath,
-      this.operationsFilePath,
-      this.outputDirectoryPath,
-      this.customScalarMapPath,
-      this.libraryName,
-      this.packageName,
-        this.customInterfaceOverrides,
-      this.url});
+  GQLCodeGenerator({
+    required this.gql,
+    required this.fragmentFilePath,
+    required this.operationsFilePath,
+    required this.outputDirectoryPath,
+    this.customScalarMapPath,
+    required this.libraryName,
+    required this.packageName,
+    required this.customInterfaceOverrides,
+    required this.url,
+  });
 
-  Future generate() async {
+  Future<void> generate() async {
     print("fetching schema…");
     final wholeSchema = await getWholeSchema(gql);
 
@@ -56,7 +57,7 @@ class GQLCodeGenerator {
     final fragmentsString = await fragmentFile.readAsString();
     final operationsString = await operationsFile.readAsString();
 
-    CustomScalarMap customScalarMap;
+    late CustomScalarMap customScalarMap;
     if (customScalarMapPath != null) {
       final customScalarMapFile = File(customScalarMapPath);
       final customScalarMapString = await customScalarMapFile.readAsString();
@@ -80,25 +81,27 @@ class GQLCodeGenerator {
     final List<OperationGroup> operationGroups = [];
 
     // check for duplicate definitions
-    final Set<String> fragmentNames = Set();
-    fragmentDoc.definitions.forEach((d) {
-      FragmentDefinitionContext fragmentDefinition = d;
+    final Set<String> fragmentNames = {};
+    for (final d in fragmentDoc.definitions) {
+      final fragmentDefinition = d as FragmentDefinitionContext;
       final fragmentName = fragmentDefinition.name;
       if (fragmentNames.contains(fragmentName)) {
         throw "duplicate fragment definition found: $fragmentName";
       }
       fragmentNames.add(fragmentName);
-    });
+    }
 
     // process interfaces first because we need to know interfaces before we can deal with everything else.
     final interfaces = fragmentDoc.definitions
         .cast<FragmentDefinitionContext>()
-        .where((f) =>
-            wholeSchema.types.firstWhere(
-                (t) => t.name == f.typeCondition.typeName.name, orElse: () {
-              throw "could not find type for fragment: ${f.name}";
-            })?.kind ==
-            "INTERFACE");
+        .where((f) {
+          final type = wholeSchema.types.firstWhere(
+            (t) => t.name == f.typeCondition.typeName.name,
+            orElse: () => throw "could not find type for fragment: ${f.name}",
+          );
+          return type?.kind == "INTERFACE";
+        });
+
     for (var fragmentDefinition in interfaces) {
       // if the fragment provided has fragment spreads, we need to declare an interface and make sure that all the declared fragment spreads turn into concrete impelemtnations of this interface
       // otherwise we just create a basic output object for this interface
@@ -111,8 +114,8 @@ class GQLCodeGenerator {
       final implementationFragmentNames = fragmentDefinition
           .selectionSet.selections
           .where((s) => s.fragmentSpread != null)
-          .map((s) => s.fragmentSpread.name);
-      if (implementationFragmentNames.length > 0) {
+          .map((s) => s.fragmentSpread!.name);
+      if (implementationFragmentNames.isNotEmpty) {
         final Map<String, String> implementationMap = Map.fromIterable(
             implementationFragmentNames,
             key: (e) => e,

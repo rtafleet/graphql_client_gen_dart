@@ -1,5 +1,5 @@
 import 'package:built_value/built_value.dart';
-import 'package:graphql_parser/graphql_parser.dart';
+import 'package:graphql_parser2/graphql_parser2.dart';
 
 part 'fragment_field.g.dart';
 
@@ -20,10 +20,10 @@ abstract class FragmentField
   factory FragmentField([updates(FragmentFieldBuilder b)]) = _$FragmentField;
 
   factory FragmentField.fromParserFieldName(FieldContext fragmentFieldContext) {
-    String fragmentName;
+    String? fragmentName;
     if (fragmentFieldContext.selectionSet != null) {
       // if the selection.field.selectionSet is not null, then we know that this should refer to another fragment
-      SelectionSetContext subSelectionSet = fragmentFieldContext.selectionSet;
+      SelectionSetContext subSelectionSet = fragmentFieldContext.selectionSet!;
       if (subSelectionSet.selections.length != 1) {
         throw InvalidFragmentException(
             "sub-type does not have a single selection (fragment). $fragmentFieldContext");
@@ -33,7 +33,7 @@ abstract class FragmentField
         throw InvalidFragmentException("sub-type does not provide a fragment");
       }
       FragmentSpreadContext subSelectionFragment =
-          fragmentSelection.fragmentSpread;
+          fragmentSelection.fragmentSpread!;
       fragmentName = subSelectionFragment.name;
     }
     if (fragmentFieldContext.fieldName.alias == null) {
@@ -42,8 +42,8 @@ abstract class FragmentField
         ..fragmentReference = fragmentName);
     }
     return FragmentField((b) => b
-      ..actualName = fragmentFieldContext.fieldName.alias.name
-      ..aliasName = fragmentFieldContext.fieldName.alias.alias
+      ..actualName = fragmentFieldContext.fieldName.name
+      ..aliasName = fragmentFieldContext.fieldName.alias
       ..fragmentReference = fragmentName);
   }
 }
