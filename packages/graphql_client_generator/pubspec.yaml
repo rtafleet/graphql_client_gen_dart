@@ -26,6 +26,7 @@ executables:
   graphql-client-generator: graphql_client_generator
 
 dependency_overrides:
+  http: ^1.2.1
   http_parser: ^4.0.0
   graphql_dart:
     path: ../graphql_dart

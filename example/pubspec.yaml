@@ -4,22 +4,23 @@ description: A sample command-line application.
 # author: Dustin Graham <dgraham@rtafleet.com>
 
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
-  built_value: ^8.0.5
-  built_collection: ^5.0.0
+  built_value: ^8.9.0
+  built_collection: ^5.1.1
   graphql_dart: any
 
 dev_dependencies:
-  test: ^1.0.0
+  test: ^1.24.0
   graphql_client_generator: any
-  build_runner: ^2.0.2
-  built_value_generator: ^8.0.5
+  build_runner: ^2.4.8
+  built_value_generator: ^8.9.0
 
 dependency_overrides:
-  build_config: ^1.0.0
-  build_runner: ^2.0.2
+  http: ^1.2.1
+  build_config: ^1.1.1
+  build_runner: ^2.4.8
   graphql_client_generator:
     path: ../packages/graphql_client_generator
   graphql_dart:
