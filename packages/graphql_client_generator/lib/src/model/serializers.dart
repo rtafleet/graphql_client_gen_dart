@@ -14,6 +14,21 @@ import 'package:graphql_client_generator/src/whole_schema/whole_schema_query_out
 
 part 'serializers.g.dart';
 
+class TypeCheckingJsonPlugin extends StandardJsonPlugin {
+  @override
+  Object beforeDeserialize(Object object, FullType specifiedType) {
+    if (object is Map<String, dynamic>) {
+      for (var entry in object.entries) {
+        if (entry.value != null && entry.value is! String && entry.value is! num && entry.value is! bool && entry.value is! List && entry.value is! Map) {
+          throw SerializationError(
+              "Invalid type for field '${entry.key}': expected String, num, bool, List, or Map, got ${entry.value.runtimeType}");
+        }
+      }
+    }
+    return super.beforeDeserialize(object, specifiedType);
+  }
+}
+
 @SerializersFor(const [
   OutputTypeDetails,
   GQLField,
@@ -36,4 +51,4 @@ part 'serializers.g.dart';
   CustomScalar,
 ])
 final Serializers serializers =
-    (_$serializers.toBuilder()..addPlugin(new StandardJsonPlugin())).build();
+    (_$serializers.toBuilder()..addPlugin(new TypeCheckingJsonPlugin())).build();

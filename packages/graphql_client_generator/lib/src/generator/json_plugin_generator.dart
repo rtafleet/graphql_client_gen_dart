@@ -24,6 +24,17 @@ if (_interfaceTypes.contains(specifiedType.root)) {
   }
   (object as Map<String, dynamic>)["\\\$"] = discriminatorValue;
 }
+
+// Add type checking for String values
+if (object is Map<String, dynamic>) {
+  for (var entry in object.entries) {
+    if (entry.value != null && entry.value is! String && entry.value is! num && entry.value is! bool && entry.value is! List && entry.value is! Map) {
+      throw ${getSerializationErrorClassName()}(
+          "Invalid type for field '\${entry.key}': expected String, num, bool, List, or Map, got \${entry.value.runtimeType}");
+    }
+  }
+}
+
 return standardJsonPlugin.beforeDeserialize(object, specifiedType);
 """;
   }
